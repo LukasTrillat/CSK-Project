@@ -1,0 +1,9 @@
+body{
+    background-color: rgb(208, 189, 243);
+}
+
+canvas{
+    position: absolute;
+    left:100px;
+    top:100px;
+}

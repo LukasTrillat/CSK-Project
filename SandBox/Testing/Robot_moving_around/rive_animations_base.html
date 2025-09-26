@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rive Base</title>
+
+  <!-- Este es el "inicializador" de rive, necesario para que todo funcione correctamente -->
+  <script src="https://unpkg.com/@rive-app/canvas"></script>
+
+  <!-- Parte CSS (irrelevante) -->
+  <style>
+    body {
+      background: #488cf0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- Tamaño de la animación -->
+  <canvas id="canvas" width="600" height="500"></canvas> 
+  <button id="triggerBtn">Click</button>
+  <!-- Propiedades y triggers -->
+  <script>
+    const riveInstance = new rive.Rive({
+      src: "rive_animation.riv",                  // Archivo .riv que contiene la animación
+      canvas: document.getElementById("canvas"),  // Elemento <canvas> donde se dibuja la animación, se puede modificar con css
+      autoplay: true,                             // Comienza a reproducir apenas cargue
+      stateMachines: "STATE_MACHINE",             // Nombre de la state machine definida en Rive
+
+      // onLoad se ejecuta una vez que el archivo .riv se ha cargado completamente
+      onLoad: () => {
+        // Ajusta el tamaño del área de dibujo de Rive para que coincida con las dimensiones del <canvas>
+        riveInstance.resizeDrawingSurfaceToCanvas();
+
+        // Obtiene todos los inputs definidos en la state machine llamada
+        const clickInput = riveInstance
+          .stateMachineInputs("STATE_MACHINE")
+          .find(input => input.name === "click"); // se busca específicamente el input que se llame "click".
+
+        // Agrega un escuchador de evento al botón con id="triggerBtn".
+        // Cuando el usuario hace clic en el botón:
+        // - Verifica si el input "click" existe.
+        // - Si existe, dispara ese input (trigger) en la animación (.fire()), 
+        // provocando la transición definida desde Rive.
+        document.getElementById("triggerBtn").addEventListener("click", () => {
+          if (clickInput) clickInput.fire();
+        });
+      },
+    });
+  </script>
+  
+</body>
+</html>
