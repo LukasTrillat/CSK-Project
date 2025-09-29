@@ -3,7 +3,7 @@ const animations = {}
 const rive_bar_arrow = new rive.Rive({
     src: "animations/rive_bar_arrow.riv",
     canvas: document.getElementById("bar_arrow_canvas"),
-    stateMachines: "STATE-MACHINE",
+    stateMachines: "STATE_MACHINE",
 
     onLoad: () => {
         rive_bar_arrow.resizeDrawingSurfaceToCanvas();
