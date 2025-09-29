@@ -1,6 +1,6 @@
 
 const letterTiles = {}
-const letterTileCanvases = ["tile_1", "tile_2", "tile_3", "tile_4"]
+const letterTileCanvases = []
 
 
 // Function to render the tiles
@@ -17,12 +17,12 @@ function renderTile(buttonName,sourceFile, canvasId, stateMachine = "STATE_MACHI
 }
 
 //Creating the canvases
-
-ammount_tiles = 4;
-for (i= 0; i< ammount_tiles; i ++)
+ammount_tiles = 3;
+for (i= 1; i< ammount_tiles + 1; i ++)
 {
-
+    letterTileCanvases.push("tile_"+i)
 }
+
 
 // For each canvas, create a tile and give it movement
 letterTileCanvases.forEach(function(tileName){
