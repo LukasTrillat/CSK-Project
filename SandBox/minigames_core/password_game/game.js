@@ -3,7 +3,7 @@ const letterTiles = {}
 const letterTileCanvases = ["tile_1", "tile_2", "tile_3", "tile_4"]
 
 
-
+// Function to render the tiles
 function renderTile(buttonName,sourceFile, canvasId, stateMachine = "STATE_MACHINE") {
     const instance = new rive.Rive({
         src: sourceFile,
@@ -16,8 +16,15 @@ function renderTile(buttonName,sourceFile, canvasId, stateMachine = "STATE_MACHI
     letterTiles[buttonName] = instance
 }
 
+//Creating the canvases
 
+ammount_tiles = 4;
+for (i= 0; i< ammount_tiles; i ++)
+{
 
+}
+
+// For each canvas, create a tile and give it movement
 letterTileCanvases.forEach(function(tileName){
     renderTile(buttonName=tileName, sourceFile="animations/rive_test_button.riv",canvasId=tileName)
 
