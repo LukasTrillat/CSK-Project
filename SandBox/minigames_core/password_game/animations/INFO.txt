@@ -1,0 +1,24 @@
+======================================
+    RIVE ANIMATIONS - MINIGAME 1 
+======================================
+
+This document provides details about the Rive animation files
+used in this project, including their state machines,
+triggers, and timelines.
+
+--------------------------------------
+File: rive_bar_arrow.riv
+--------------------------------------
+State Machine : STATE_MACHINE
+Triggers      : (none)
+Timelines     : TL-IDLE
+
+--------------------------------------
+File: rive_bar_goal.riv
+--------------------------------------
+State Machine : STATE_MACHINE
+Triggers      : TRIGGER-CORRECT
+                TRIGGER-INCORRECT
+Timelines     : TL-IDLE
+                TL-CORRECT
+                TL-INCORRECT
