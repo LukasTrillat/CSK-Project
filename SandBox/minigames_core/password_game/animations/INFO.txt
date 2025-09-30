@@ -22,3 +22,14 @@ Triggers      : TRIGGER-CORRECT
 Timelines     : TL-IDLE
                 TL-CORRECT
                 TL-INCORRECT
+
+--------------------------------------
+File: rive_clock.riv
+--------------------------------------
+State Machine : STATE_MACHINE
+Triggers      : TRIGGER-NEXT
+Timelines     : TL-IDLE
+		TL-HURRY
+                TL-IDLE-HURRY
+		TL-END
+
