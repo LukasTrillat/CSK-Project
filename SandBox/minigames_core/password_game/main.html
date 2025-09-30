@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang = "es">
-<head> 
-    <title> Test1 </title>
-    <script src="https://unpkg.com/@rive-app/canvas"></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
+    <head> 
+        <title> Password_game </title>
+        <script src="https://unpkg.com/@rive-app/canvas"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
 
-<body>
+    <body>
 
-    <canvas id="robot_canvas"></canvas>
+        <canvas id="robot_canvas" width=128px length=128px></canvas>
 
-
-
-    <script src="game.js" defer></script>
-    <script src="robotCursor.js" defer></script>
-
-</body>
+        <!-- CALLING JS SCRIPTS-->
+        <script src="game.js" defer></script> <!-- GAME LOGIC-->
+        <script src="robotCursor.js" defer></script> <!-- ROBOT FOLLOWING THE CURSOR-->
+    </body>
 
 </html>

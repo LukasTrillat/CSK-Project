@@ -29,7 +29,7 @@ File: rive_clock.riv
 State Machine : STATE_MACHINE
 Triggers      : TRIGGER-NEXT
 Timelines     : TL-IDLE
-		TL-HURRY
+		        TL-HURRY
                 TL-IDLE-HURRY
-		TL-END
+		        TL-END
 

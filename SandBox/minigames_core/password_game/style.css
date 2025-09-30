@@ -2,8 +2,11 @@ body{
     background-color: rgb(208, 189, 243);
 }
 
-canvas {
+#robot_canvas {
   position: absolute;
   top: 20px;
   left: 20px;
+}
+
+canvas{
 }
