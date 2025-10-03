@@ -47,9 +47,9 @@ File: rive_button.riv
 State Machine : STATE_MACHINE
 
 Triggers      : TRIGGER-DROP
-	      : TRIGGER-HOLD
+	      	  : TRIGGER-HOLD
               : TRIGGER-MOUSEIN
-			  
+
 Timelines     : TL-IDLE
 	      :	TL-MOUSEIN-INTRO
               : TL-MOUSEIN-IDLE

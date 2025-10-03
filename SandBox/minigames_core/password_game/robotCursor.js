@@ -16,10 +16,10 @@
 
     //Gets the canvas item
     const robo = document.getElementById("robot_canvas");
-    let targetX = 0;
-    let targetY = 0;
-    let currentX = 0;
-    let currentY = 0;
+    let robotTargetX = 0;
+    let robotTargetY = 0;
+    let robotCurrentX = 0;
+    let robotCurrentY = 0;
     const distance = 40;
 
     const screenWidth = window.innerWidth;
@@ -31,11 +31,11 @@
       const mouseX = e.clientX;
       const mouseY = e.clientY;
 
-      if (mouseX > screenWidth/2) {targetX = e.clientX - robo.width / 2 + distance;}
-      else {targetX = e.clientX - robo.width /2 - distance}
+      if (mouseX > screenWidth/2) {robotTargetX = e.clientX - robo.width / 2 + distance;}
+      else {robotTargetX = e.clientX - robo.width /2 - distance}
 
-      if (mouseY > screenHeight/2) {targetY = e.clientY - robo.height/2 + distance;}
-      else {targetY = e.clientY - robo.height/2 - distance;}
+      if (mouseY > screenHeight/2) {robotTargetY = e.clientY - robo.height/2 + distance;}
+      else {robotTargetY = e.clientY - robo.height/2 - distance;}
 
     });
 
@@ -43,11 +43,11 @@
     function animate() {
       // Lerp: move current position a fraction toward target
       const speed = 0.05; // adjust between 0 (slow) and 1 (fast)
-      currentX += (targetX - currentX) * speed;
-      currentY += (targetY - currentY) * speed;
+      robotCurrentX += (robotTargetX - robotCurrentX) * speed;
+      robotCurrentY += (robotTargetY - robotCurrentY) * speed;
 
-      robo.style.left = currentX + "px";
-      robo.style.top = currentY + "px";
+      robo.style.left = robotCurrentX + "px";
+      robo.style.top = robotCurrentY + "px";
 
       requestAnimationFrame(animate);
     }
