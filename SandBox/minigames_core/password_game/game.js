@@ -1,7 +1,6 @@
 
 // ------ ALGORITHM TO GENERATE CHARACTERS  ------ // 
 
-const all_characters = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ1234567890!?¿.,_-".split('')
 const uppercase_letters = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"
 const letters = "abcdefghijklmnñopqrstuvwxyz".split('')
 const special_characters = "!?¿.,_-".split('')
@@ -19,6 +18,7 @@ function generateLetters(total=26, numLetters=11, numSpecial_chars=4, numUpperca
 // ------ RENDER LETTER TILES ------ // 
 
 const letterTiles = {}
+const letterTiles_ID = []
 const letterTileCanvases_ID = []
 const letterTileContainers_ID = []
 
@@ -28,16 +28,21 @@ function renderTile(buttonName,sourceFile, canvasId, stateMachine = "STATE_MACHI
         src: sourceFile,
         canvas: document.getElementById(canvasId),
         stateMachines: stateMachine,
-        onLoad: () => {instance.resizeDrawingSurfaceToCanvas()}
+        autoplay:true,
+        onLoad: () => {instance.resizeDrawingSurfaceToCanvas()
+        }
     })
     letterTiles[buttonName] = instance
 }
 
 //Creating the canvases
 ammount_tiles = 26;
-tile_canvas_size = 100
+tile_canvas_size = 130
+tile_canvas_x_offset = 100
+tile_canvas_x_separation = 110
+
+
 char_list = generateLetters()
-console.log(char_list)
 for (i= 1; i< ammount_tiles + 1; i ++)
 {
     // -- CANVAS CONTAINER ( RIVE - TEXT) --
@@ -48,12 +53,12 @@ for (i= 1; i< ammount_tiles + 1; i ++)
     //After 14 tiles, render them a bit lower
     if (i < 14)
     {
-        container.style.top = "660px";
-        container.style.left = 125 * i + "px";
+        container.style.top = "690px";
+        container.style.left = tile_canvas_x_separation * i + tile_canvas_x_offset +"px";
     }
     else {
         container.style.top = "800px";
-        container.style.left = 125 * (i -13) + "px";
+        container.style.left = tile_canvas_x_separation * (i -13) + tile_canvas_x_offset + "px";
     }
 
     // -- LETTER CANVAS --
@@ -72,7 +77,7 @@ for (i= 1; i< ammount_tiles + 1; i ++)
 
     // -- RIVE CANVAS --
     const rive_canvas = document.createElement("canvas")
-    rive_canvas.id = "tile_"+i;
+    rive_canvas.id = "tile_canvas"+i;
     rive_canvas.width = tile_canvas_size;
     rive_canvas.height = tile_canvas_size;
 
@@ -82,18 +87,27 @@ for (i= 1; i< ammount_tiles + 1; i ++)
     document.body.appendChild(container)
 
     //Adds the canvas to the list
-    letterTileCanvases_ID.push("tile_"+i)
+    letterTiles_ID.push("tile_"+i)
+    letterTileCanvases_ID.push("tile_canvas"+i)
     letterTileContainers_ID.push("tile_container"+i)
 }
 
-// For each canvas, render a tile
-letterTileCanvases_ID.forEach(function(tile_id){
-    renderTile(buttonName=tile_id, sourceFile="animations/rive_test_button.riv",canvasId=tile_id)})
 
+// For each canvas, render a tile
+for (i = 0; i < letterTiles_ID.length; i++){
+
+    renderTile(buttonName=letterTiles_ID[i], sourceFile="animations/rive_button.riv",canvasId=letterTileCanvases_ID[i])
+
+}
+
+
+
+
+let counter = 0
 // Give movement to each letter container
 letterTileContainers_ID.forEach(function(container_id){
     let newX = 0, newY = 0, startX = 0, startY = 0;
-
+    
     const container = document.getElementById(container_id)
     container.addEventListener('mousedown', mouseDown)
 
@@ -118,21 +132,83 @@ letterTileContainers_ID.forEach(function(container_id){
     function mouseUp(e){
         document.removeEventListener('mousemove', mouseMove)
     }
+
+
 })
+
+
+
+letterTileContainers_ID.forEach(function(container_id, index){
+    const container = document.getElementById(container_id);
+    const tileId = letterTiles_ID[index]; // map container -> tile
+
+    container.addEventListener('mouseover', function () {
+        const riveInstance = letterTiles[tileId];
+        if (!riveInstance || !riveInstance.loaded) return; // instance not loaded yet
+        const inputs = riveInstance.stateMachineInputs("STATE_MACHINE");
+        const trigger = inputs.find(i => i.name === "TRIGGER-MOUSEIN");
+        if (trigger) trigger.fire();
+    });
+
+    container.addEventListener('mousedown', function () {
+        const riveInstance = letterTiles[tileId];
+        if (!riveInstance || !riveInstance.loaded) return; // instance not loaded yet
+        const inputs = riveInstance.stateMachineInputs("STATE_MACHINE");
+        const trigger = inputs.find(i => i.name === "TRIGGER-HOLD");
+        if (trigger) trigger.fire();
+    });
+
+    container.addEventListener('mouseup', function () {
+        const riveInstance = letterTiles[tileId];
+        if (!riveInstance || !riveInstance.loaded) return; // instance not loaded yet
+        const inputs = riveInstance.stateMachineInputs("STATE_MACHINE");
+        const trigger = inputs.find(i => i.name === "TRIGGER-DROP");
+        if (trigger) trigger.fire();
+    });
+
+
+    
+});
 
 
 // ------ PROGRESS BAR LOGIC AND RENDERING ------ // 
 
-progBarSprites = {}
+const progBarSprites = {}
 
-function renderRiveSprite(spriteName ,sourceFile, canvasId, stateMachine="STATE_MACHINE")
+function renderRiveSprite({spriteName ,sourceFile, left = 0 , top = 0, width = 300, height = 300, aut = false, debug=false,stateMachine="STATE_MACHINE"})
 {
-    const instace = new rive.Rive({
+
+    //Creates and sets up the canvas for the sprite
+    progBarSprites[spriteName +  "_canvas"] = document.createElement("canvas")
+    progBarSprites[spriteName + "_canvas"].style.position = "absolute";
+    progBarSprites[spriteName + "_canvas"].id = spriteName + "_id"
+    progBarSprites[spriteName +  "_canvas"].style.left = left + "px"
+    progBarSprites[spriteName +  "_canvas"].style.top = top + "px"
+    progBarSprites[spriteName +  "_canvas"].style.width = width + "px"
+    progBarSprites[spriteName +  "_canvas"].style.height = height + "px"
+
+    document.body.appendChild(progBarSprites[spriteName + "_canvas"])
+
+    //Adds an option to show the canvas size with a black background
+    if (debug) {progBarSprites[spriteName +  "_canvas"].style.backgroundColor = "black"}
+
+    //Creates the rive instance
+    const instance = new rive.Rive({
         src: sourceFile,
-        canvas: document.getElementById(canvasId),
-        stateMachine: stateMahchine,
+        canvas: document.getElementById(spriteName + "_id"),
+        stateMachine: stateMachine,
+        autoplay: aut,
         onLoad: () => {instance.resizeDrawingSurfaceToCanvas()}
     })
-    letterTiles[spriteName] = instance
+    progBarSprites[spriteName] = instance
 }
+
+
+renderRiveSprite({spriteName:"bar", sourceFile:"animations/rive_bar.riv", top:50, left:650, width:500, height:100})
+renderRiveSprite({spriteName:"bar_goal", sourceFile:"animations/rive_bar_goal.riv", top:6, left:700, width:150, height:150})
+renderRiveSprite({spriteName:"bar_arrow", sourceFile:"animations/rive_bar_arrow.riv", aut:true, top:120, left:660,width:50, height:50})
+
+
+
+
 
