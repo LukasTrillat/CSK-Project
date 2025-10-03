@@ -49,11 +49,11 @@ for (i= 1; i< ammount_tiles + 1; i ++)
     if (i < 14)
     {
         container.style.top = "660px";
-        container.style.left = 80 * i + "px";
+        container.style.left = 125 * i + "px";
     }
     else {
         container.style.top = "800px";
-        container.style.left = 80 * (i -15) + "px";
+        container.style.left = 125 * (i -13) + "px";
     }
 
     // -- LETTER CANVAS --
@@ -123,5 +123,16 @@ letterTileContainers_ID.forEach(function(container_id){
 
 // ------ PROGRESS BAR LOGIC AND RENDERING ------ // 
 
+progBarSprites = {}
 
+function renderRiveSprite(spriteName ,sourceFile, canvasId, stateMachine="STATE_MACHINE")
+{
+    const instace = new rive.Rive({
+        src: sourceFile,
+        canvas: document.getElementById(canvasId),
+        stateMachine: stateMahchine,
+        onLoad: () => {instance.resizeDrawingSurfaceToCanvas()}
+    })
+    letterTiles[spriteName] = instance
+}
 
