@@ -1,6 +1,6 @@
-======================================
-    RIVE ANIMATIONS - MINIGAME 1 
-======================================
+=======================================
+ RIVE ANIMATIONS - MINIGAME - PASSWORD 
+=======================================
 
 This document provides details about the Rive animation files
 used in this project, including their state machines,
@@ -29,7 +29,28 @@ File: rive_clock.riv
 State Machine : STATE_MACHINE
 Triggers      : TRIGGER-NEXT
 Timelines     : TL-IDLE
-		        TL-HURRY
+		TL-HURRY
                 TL-IDLE-HURRY
-		        TL-END
+		TL-END
 
+--------------------------------------
+File: rive_bar.riv
+--------------------------------------
+State Machine : STATE_MACHINE
+Triggers      : (none)
+Timelines     : (none)
+
+
+--------------------------------------
+File: rive_button.riv
+--------------------------------------
+State Machine : STATE_MACHINE
+Triggers      : TRIGGER-DROP
+	      : TRIGGER-HOLD
+              : TRIGGER-MOUSEIN
+Timelines     : TL-IDLE
+	      :	TL-MOUSEIN-INTRO
+              : TL-MOUSEIN-IDLE
+	      :	TL-HOLD-INTRO
+	      : TL-HOLD-IDLE
+	      : TL-DROP
