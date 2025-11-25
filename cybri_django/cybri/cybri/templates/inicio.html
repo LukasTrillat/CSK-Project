@@ -1,0 +1,142 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'index_styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <title>Cybri - Página Principal v0.1</title>
+</head>
+<body>
+    
+    <nav>
+        <div class="nav-logo">
+            <a href="#">
+                <img src="{% static 'images/logocybri1.png' %}">
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li class="link"><a href="#">Home</a></li>
+            <li id="link1" class="link"><a href="#">Features</a></li>
+            <li id="link2" class="link"><a href="#">About</a></li>
+        </ul>
+        <button class="btn" id="login_button">Login</button>
+    </nav>
+
+    <header class="container">
+        <div class="content">
+            <span class="blur"></span>
+            <span class="blur"></span>
+            <h4>LEARN TO PROTECT YOURSELF. PLAY SAFE.</h4>
+            <H1>Hi, I'm <span>Cybri</span> Your Super Internet Guide.</H1>
+            <p>
+            My job is to teach you the coolest tricks 
+            to protect your secrets and 
+            be invincible against the dangers of the internet.
+            </p>
+            <button class="btn">Get Started</button>
+        </div>
+        <div class="image">
+            <img src="{% static 'images/header.png' %}">
+        </div>
+    </header>
+
+    <section class="container" id="features">
+        <h2 class="header">OUR FEATURES</h2>
+        <div class="features">
+            <div class="card">
+                <span><i class="ri-hammer-line"></i></span>
+                <h4>Fix Your Bugs</h4>
+                <p>
+                    Cybri detected issues! 
+                    Click here to fix your passwords,
+                    profiles, and privacy settings. 
+                
+                </p>
+                <a href="#">Join Now <i class="ri-arrow-right-line"></i></a>
+            </div>
+
+            <div class="card">
+                <span><i class="ri-spy-line"></i></span>
+                <h4>Hero Scan</h4>
+                <p>
+                    How well are you doing? 
+                    Test your protective superpowers
+                    in the Cybri simulator.
+                
+                </p>
+                <a href="#">Join Now <i class="ri-arrow-right-line"></i></a>
+            </div>
+            <div class="card">
+                <span><i class="ri-keyboard-line"></i></span>
+                <h4>The Key Laboratory</h4>
+                <p>
+                    No more easy passwords! Use Cybri's 
+                    generator to create passwords that are 
+                    impossible to guess.    
+                
+                </p>
+                <a href="#">Join Now <i class="ri-arrow-right-line"></i></a>
+            </div>
+            <div class="card">
+                <span><i class="ri-map-2-line"></i></span>
+                <h4>Map of Super-Missions</h4>
+                <p>
+
+                    Explore the world of cybersecurity! 
+                    Cybri has marked danger zones that 
+                    only you can overcome level by level.
+                
+                </p>
+                <a href="#">Join Now <i class="ri-arrow-right-line"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="container" id="about">
+        <span class="blur"></span>
+        <span class="blur"></span>
+        <div class="column">
+            <div class="logo">
+                <img src="{% static 'images/logocybri1.png' %}">
+            </div>
+            <p>
+                ¡Follow Us!
+            </p>
+            <div class="socials">
+                <a href="#"><i class="ri-youtube-line"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+                <a href="#"><i class="ri-twitter-line"></i></a>
+
+            </div>
+        </div>
+
+        <div class="column">
+            <h4>Company</h4>
+            <a href="#">Businnes</a>
+            <a href="#">Partnership</a>
+            <a href="#">Network</a>
+        </div>
+        <div class="column">
+            <h4>About Us</h4>
+            <a href="#">Blog</a>
+            <a href="#">Channels</a>
+            <a href="#">Sponsors</a>
+        </div>
+        <div class="column">
+            <h4>Contact</h4>
+            <a href="#">Contact Us</a>
+            <a href="#">Privicy Policy</a>
+            <a href="#">Terms & Conditions</a>
+        </div>
+    </footer>
+
+    <div class="copyright">
+        Copyright © 2025 Cybri Education. All rights reserved.
+    </div>
+    <script src="{% static 'index_script.js' %}"></script>
+</body>
+</html>

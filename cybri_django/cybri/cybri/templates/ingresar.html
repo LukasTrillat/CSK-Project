@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Aquí importé los iconos de FontAwesome para las redes sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <!-- Conecté con css -->
+    <link rel="stylesheet" href="{% static 'login_styles.css' %}">
+    <title>Login Page</title>
+</head>
+<body>
+
+
+    <!-- Este es el contenedor principal -->
+    <div class="container" id="container">
+        <!-- Aquí cree el formulario de registro-->
+        <div class="form-container sign-up">
+            <form>
+                <h1>Create Account</h1>
+                <!-- Aquí se ven los iconos de las redes sociales previamente importados desde FontAwesome -->
+                <div class="social-icons">
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-github"></i></a>
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for 
+                registeration</span>
+                <!-- Esto son los campos de entrada para el Sing Up-->
+                <input type="text"
+                placeholder="Name">
+                <input type="email"
+                placeholder="Email">
+                <input type="password"
+                placeholder="Password">
+                <button>Sing Up</button>
+            </form>
+        </div> 
+        <!-- Este es el formulario de inicio de sesión -->
+        <div class="form-container sign-in">
+            <form>
+                <h1>Sing In</h1>
+                <!-- Los iconos de este -->
+                <div class="social-icons">
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-github"></i></a>
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for 
+                password</span>
+                <!-- Campos de entrada -->
+                <input type="email"
+                placeholder="Email">
+                <input type="password"
+                placeholder="Password">
+                <a href="#">Forget your Password?</a>
+                <button>Sing In</button>
+            </form>
+        </div> 
+        <!-- Este es el panel deslizante que cambia enetre login y registration -->
+        <div class="toggle-container">
+            <div class="toggle">
+                <!-- Panel para volver a iniciar sesión-->
+                <div class="toggle-panel 
+                toogle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your personal details
+                    to use all of site features</p>
+                    <button class="hidden" 
+                    id ="login">Sign In</button>
+                </div>
+                <!-- Y este es el panel para registrarse-->
+                <div class="toggle-panel 
+                toogle-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Register with your personal 
+                    details to use all of site
+                    features</p>
+                    <button class="hidden" 
+                    id ="register">Sign Up</button>
+                </div>
+            </div>
+        </div>      
+    </div>
+    <!-- Importe js que es el que da la lógica-->
+    <script src="{% static 'login_script.js' %}"></script>
+</body>
+</html>
