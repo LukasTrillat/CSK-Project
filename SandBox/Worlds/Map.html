@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>World</title>
+
+    <!-- Necessary conections -->
+    <link rel="stylesheet" href="Map.css">
+
+    <script src="MapMaker.js"></script>
+    <script src="MapFunctions.js"></script>
+
+    <!-- World Properties -->
+    <script src="WorldExample.js"></script> <!-- IMPORTANT: You cannot load a world with its properties -->
+
+</head>
+
+<body>
+    <!-- This container manages all pages, it must be the parent of all pages -->
+    <div class="wide-container" id="WorldContainer">
+        <img src="Assets/Sprites/WorldExample.png" alt="Descripción de la imagen" width="1500" height="1000">
+    </div>
+
+    <!-- world data UI -->
+    <div id="WorldUI">
+        <a id="WorldName"></a>
+    </div>
+
+    <div class="scroll-ui" id="ScrollUI">
+        <div class="scroll-thumb" id="ScrollThumb"></div>
+    </div>
+
+
+    <!-- World JavaScript Functions -->
+    <script>
+        SequenceTrigger(ExampleSequence);
+    </script>
+
+
+</body>
