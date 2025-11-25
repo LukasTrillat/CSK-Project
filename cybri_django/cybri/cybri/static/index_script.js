@@ -35,5 +35,5 @@ link2.addEventListener('click', (event) => {
 
 const login_button = document.getElementById("login_button")
 login_button.addEventListener('click',(event) => {
-    window.location.href = "/ingresar/";
+    window.location.href = "/usuarios/ingresar";
 })

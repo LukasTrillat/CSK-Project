@@ -5,9 +5,16 @@ from django.db import models
 class Padre(models.Model):
     id = models.AutoField(primary_key=True)
     nombre = models.CharField(max_length=100, null=False)
-    rut = models.CharField(max_length=10, null=False)
     correo = models.CharField(max_length=60, null=False)
-    contraseña = models.CharField(max_length=20, null= False)
+    contraseña = models.CharField(max_length=20, null= False, default='12345')
 
-# class Niño(models.Model):
-# PARA DESPUES
+    def __str__(self):
+        return f"{self.nombre}"
+
+class Hijo(models.Model):
+    padre = models.ForeignKey(Padre, on_delete=models.CASCADE, related_name='hijos')
+    nombre = models.CharField(max_length=100)
+    edad = models.IntegerField(default=0)
+    
+    def __str__(self):
+        return self.nombre

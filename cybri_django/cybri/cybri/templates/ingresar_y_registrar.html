@@ -1,0 +1,118 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Iconos de redes sociales (No funcionales) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'login_styles.css' %}">
+    <title>Ingresar - Registrar</title>
+</head>
+<body>
+
+
+    <!-- Main Container -->
+    <div class="container" id="container">
+
+        <!-- Formulario de Registro-->
+        <div class="form-container sign-up">
+            <form method="POST" name="accion" value="registrar">
+            {% csrf_token %}
+                <h1>Create Account</h1>
+
+                <!-- Aquí se ven los iconos de las redes sociales previamente importados desde FontAwesome -->
+                <div class="social-icons">
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-github"></i></a>
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-linkedin-in"></i></a>
+                </div>
+                
+                <span>or use your email for 
+                registeration</span>
+
+                <!--Campos de Entrada-->
+                <input type="text" placeholder="Name" id="nombre" name="nombre">
+                <input type="email" placeholder="Email" id="email" name="email">
+                <input type="password" placeholder="Password" id="password" name="password">
+
+                <!-- Boton de Registrar-->
+                <button>Sing Up</button>
+            </form>
+        </div>
+
+        <!-- Formulario de Inicio De Sesión -->
+        <div class="form-container sign-in">
+            <form method="POST" name="accion" value="iniciar_sesion">
+            {% csrf_token %}
+                <h1>Sing In</h1>
+
+                <!-- Iconos redes sociales -->
+                <div class="social-icons">
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-google-plus-g"></i></a>
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-github"></i></a>
+                    <a href="#" class="icon"><i 
+                    class="fa-brands 
+                    fa-linkedin-in"></i></a>
+                </div>
+
+                <span>or use your email for 
+                password</span>
+
+                <!-- Campos de entrada -->
+                <input type="email" placeholder="Email" id="email" name="email">
+                <input type="password" placeholder="Password" name="password" id="password">
+                <a href="#">Forget your Password?</a>
+                
+                <!-- Boton de Iniciar Sesión-->
+                <button>Sing In</button>
+            </form>
+        </div> 
+
+        <!-- Panel deslizante que cambia enetre login y registration -->
+        <div class="toggle-container">
+            <div class="toggle">
+                <!-- Panel para volver a iniciar sesión-->
+                <div class="toggle-panel 
+                toogle-left">
+                    <h1>Welcome Back!</h1>
+                    <p>Enter your personal details
+                    to use all of site features</p>
+                    <button class="hidden" 
+                    id ="login">Sign In</button>
+                </div>
+                <!-- Y este es el panel para registrarse-->
+                <div class="toggle-panel 
+                toogle-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Register with your personal 
+                    details to use all of site
+                    features</p>
+                    <button class="hidden" 
+                    id ="register">Sign Up</button>
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    <!-- Main JS-->
+    <script src="{% static 'login_script.js' %}"></script>
+</body>
+</html>

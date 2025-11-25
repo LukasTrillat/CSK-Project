@@ -1,0 +1,65 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <link rel="stylesheet" href="{% static 'manage_users_styles.css' %}">
+    <title>Admin Panel - Usuarios</title>
+</head>
+<body>
+
+    <nav class="admin-nav">
+        <div class="logo">Cybri Admin</div>
+        <a href="/" class="back-btn">Salir del panel</a>
+    </nav>
+
+    <div class="container" id="main_container">
+        
+        <h1 class="page-title">Manejo de usuarios</h1>
+
+        <div class="grid-container">
+            {% for padre in padres %}
+            <div class="user-card">
+                <div class="card-header">
+                    <div class="avatar">
+                        <i class="ri-user-star-line"></i>
+                    </div>
+                    <div class="info">
+                        <h3>{{ padre.nombre }}</h3>
+                        <span>{{ padre.correo }}</span>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <h4>Niños a cargo ({{ padre.hijos.count }})</h4>
+                    
+                    <ul class="children-list">
+                        {% for hijo in padre.hijos.all %}
+                            <li>
+                                <i class="ri-gamepad-line"></i> 
+                                {{ hijo.nombre }} <span class="age">(Age: {{ hijo.edad }})</span>
+                            </li>
+                        {% empty %}
+                            <li class="empty-state">No children registered yet.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="card-footer">
+                    <button class="action-btn delete">Eliminar</button>
+                    <button class="action-btn edit">Editar</button>
+                    <button class="action-btn add">Añadir Niño</button>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <script src="{% static 'manage_users_script.js' %}"></script>
+</body>
+</html>

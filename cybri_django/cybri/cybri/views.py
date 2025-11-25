@@ -5,5 +5,3 @@ from django.shortcuts import render, HttpResponse
 def inicio(request):
     return render(request, "inicio.html")
 
-def ingresar(request):
-    return render(request, "ingresar.html")
