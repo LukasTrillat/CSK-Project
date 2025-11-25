@@ -49,9 +49,12 @@
                 </div>
 
                 <div class="card-footer">
-                    <button class="action-btn delete">Eliminar</button>
-                    <button class="action-btn edit">Editar</button>
-                    <button class="action-btn add">Añadir Niño</button>
+                    <a href="{% url 'eliminar_usuario' padre.id %}" class="action-btn delete" style="text-decoration: none;">
+                    Eliminar
+                    </a>
+                    <a href="{% url 'editar_usuario' padre.id %}" class="action-btn edit" style="text-decoration: none;">
+                    Editar
+                    </a>
 
                 </div>
             </div>
