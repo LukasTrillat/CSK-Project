@@ -16,12 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from usuarios import views
+from usuarios import usuarios_views
+from juegos import juegos_views
 from cybri import views as core_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', core_views.inicio, name="inicio"), # -- Pagina de inicio -- #
     path('usuarios/', include('usuarios.urls')), # -- Acceso a los usuarios -- #
-    path('cerrar_sesion', core_views.cerrar_sesion, name="cerrar_sesion")
+    path('cerrar_sesion', core_views.cerrar_sesion, name="cerrar_sesion"), # -- Cerrar sesion -- #
+    path('juegos/', include('usuarios.urls')) # -- Acceso a los juegos -- #
 ]

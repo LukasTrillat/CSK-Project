@@ -43,7 +43,9 @@
                 </a>
 
             {% else %}
-                <button class="btn" id="login_button">Login</button>
+                <a href="{% url 'ingresar_y_registrar_usuarios' %}" class="btn">
+                    login
+                </a>
             {% endif %}
         </div>
     </nav>

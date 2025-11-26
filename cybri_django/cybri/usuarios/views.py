@@ -63,7 +63,7 @@ def editar_usuario(request, id):
 def eliminar_usuario(request, id):
     usuario = get_object_or_404(Padre, id=id)
     usuario.delete()
-    return redirect(ver_usuarios)
+    return redirect(manejar_usuarios)
 
 
 def ingresar_y_registrar(request):
