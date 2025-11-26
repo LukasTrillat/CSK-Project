@@ -30,10 +30,3 @@ link2.addEventListener('click', (event) => {
     scrollToElement("#about");
 });
 
-
-// ---- HYPERVINCULOS ---- //
-
-const login_button = document.getElementById("login_button")
-login_button.addEventListener('click',(event) => {
-    window.location.href = "/usuarios/ingresar";
-})

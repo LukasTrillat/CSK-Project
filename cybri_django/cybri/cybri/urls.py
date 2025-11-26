@@ -17,10 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from usuarios import views
-from cybri import views
+from cybri import views as core_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.inicio, name="inicio"), # -- Pagina de inicio -- #
-    path('usuarios/', include('usuarios.urls')) 
+    path('', core_views.inicio, name="inicio"), # -- Pagina de inicio -- #
+    path('usuarios/', include('usuarios.urls')), # -- Acceso a los usuarios -- #
+    path('cerrar_sesion', core_views.cerrar_sesion, name="cerrar_sesion")
 ]

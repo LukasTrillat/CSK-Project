@@ -57,7 +57,17 @@
                                 <strong>{{ hijo.nombre }}</strong>
                                 <small>{{ hijo.edad }} años</small>
                             </div>
-                            </li>
+                            
+                            <form method="POST" style="margin-left: auto;">
+                                {% csrf_token %}
+                                <input type="hidden" name="hijo_id" value="{{ hijo.id }}">
+                                
+                                <button type="submit" name="accion" value="eliminar_hijo" 
+                                        style="background: none; border: none; cursor: pointer; color: #ef4444; font-size: 1.2rem;">
+                                    <i class="ri-delete-bin-line"></i>
+                                </button>
+                            </form>
+                        </li>
                     {% empty %}
                         <li class="empty-state">No hay hijos registrados aún.</li>
                     {% endfor %}

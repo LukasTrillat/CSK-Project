@@ -9,24 +9,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
     <title>Cybri - Página Principal v0.1</title>
 </head>
-<body>
-    
+
+<body>    
     <nav>
+    <!-- Navegation bar-->
         <div class="nav-logo">
             <a href="#">
                 <img src="{% static 'images/logocybri1.png' %}">
             </a>
         </div>
 
+        <!-- Navegation Links-->
         <ul class="nav-links">
             <li class="link"><a href="#">Home</a></li>
             <li id="link1" class="link"><a href="#">Features</a></li>
             <li id="link2" class="link"><a href="#">About</a></li>
+            {% if usuario_logueado and usuario_logueado.admin == True %}
             <li id="link3" class="link"><a href='/usuarios/'>User Managment</a></li>
+            {% elif usuario_logueado %}
+            <li id="link3" class="link"><a href="{% url 'editar_usuario' usuario_logueado.id %}">Edit User</a></li>
+            {% endif %}
         </ul>
-        <button class="btn" id="login_button">Login</button>
+        
+        <!-- LogIn Button / Welcome corner-->
+        <div class="nav-auth">
+            {% if usuario_logueado %}
+                <span style="color: white; margin-right: 15px;">
+                    Hola, <b>{{ usuario_logueado.nombre }}</b>
+                </span>
+                
+                <a href="{% url 'cerrar_sesion' %}" class="btn" style="background-color: #ef4444; text-decoration: none;">
+                    Salir
+                </a>
+
+            {% else %}
+                <button class="btn" id="login_button">Login</button>
+            {% endif %}
+        </div>
     </nav>
 
+    <!-- Main Page -->
     <header class="container">
         <div class="content">
             <span class="blur"></span>
@@ -38,7 +60,15 @@
             to protect your secrets and 
             be invincible against the dangers of the internet.
             </p>
-            <button class="btn">Get Started</button>
+            {% if not usuario_logueado %}
+                <a href="{% url 'ingresar_y_registrar_usuarios' %}" class="btn">
+                    Get Started
+                </a>
+            {% else %}
+                <a href="{% url 'ingresar_y_registrar_usuarios' %}" class="btn">
+                    Get Started
+                </a>
+            {% endif %}
         </div>
         <div class="image">
             <img src="{% static 'images/header.png' %}">
