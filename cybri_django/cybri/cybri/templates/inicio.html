@@ -62,14 +62,20 @@
             to protect your secrets and 
             be invincible against the dangers of the internet.
             </p>
+            <!-- Buttons for accesing to the application-->>
             {% if not usuario_logueado %}
                 <a href="{% url 'ingresar_y_registrar_usuarios' %}" class="btn">
                     Get Started
                 </a>
             {% else %}
-                <a href="{% url 'ingresar_y_registrar_usuarios' %}" class="btn">
-                    Get Started
+                <a href="{% url 'mapa_juegos' %}" class="btn btn-play">
+                    Let's play
                 </a>
+
+                <a href="{% url 'ver_estadisticas' %}" class="btn btn-stats">
+                    Check stats
+                </a>
+
             {% endif %}
         </div>
         <div class="image">

@@ -4,8 +4,6 @@ from .models import Padre, Hijo
 # -- Views -- #
 
 def manejar_usuarios(request):
-
-
     # -- Revisar si el usuario es un administrador -- #
     id_en_sesion = request.session.get('usuario_id')
 
@@ -19,7 +17,6 @@ def manejar_usuarios(request):
             return render(request, "manejo_usuarios.html", {"padres": padres})
  
     return redirect('inicio')
-
 
 
 def editar_usuario(request, id):
@@ -99,3 +96,11 @@ def ingresar_y_registrar(request):
         return render(request, 'ingresar_y_registrar.html')
         
 
+def ver_estadisticas(request):
+    id_en_sesion = request.session.get('usuario_id')
+
+    if id_en_sesion:
+        usuario_logueado = Padre.objects.filter(id=id_en_sesion).first()
+        return render(request, "control_parental.html", {"usuario" : usuario_logueado})
+        
+    return redirect('inicio')

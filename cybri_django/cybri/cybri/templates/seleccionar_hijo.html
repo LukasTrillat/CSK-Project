@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    
+    <link rel="stylesheet" href="{% static 'seleccionar_hijo_styles.css' %}">
+    
+    <title>¿Quién va a jugar? - Cybri</title>
+</head>
+<body>
+
+    <div class="profile-gate-container">
+        <h1 class="gate-title">¿Quién va a jugar?</h1>
+
+        <div class="profiles-list">
+            
+            {% for hijo in hijos %}
+                <a href="{% url 'seleccionar_hijo' hijo.id %}" class="profile-card">
+                    <div class="avatar">
+                        <i class="ri-bear-smile-line"></i>
+                    </div>
+                    <span class="profile-name">{{ hijo.nombre }}</span>
+                </a>
+            {% empty %}
+                <div class="empty-state">
+                    <p>No hay perfiles infantiles creados.</p>
+                </div>
+            {% endfor %}
+
+            <a href="{% url 'editar_usuario' usuario_logueado.id %}" class="profile-card">
+                <div class="avatar add-new">
+                    <i class="ri-add-line"></i>
+                </div>
+                <span class="profile-name">Agregar</span>
+            </a>
+
+        </div>
+
+        <a href="{% url 'editar_usuario' usuario_logueado.id %}" class="manage-btn">
+            Administrar Perfil
+        </a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+  html, body {
+    height: 100%;
+    width: 8000px;
+    margin: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background-color: #58b0e0;
+  }
+
+.scroll-ui {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 14px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.scroll-thumb {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 120px;
+    background: white;
+    border-radius: 10px;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+}
+
+.scroll-thumb:active {
+    cursor: grabbing;
+}
+
+
+  /* UI CONFIGURATION */
+  #WorldUI {
+    position: fixed;
+    top: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 300px;
+    height: 60px;
+
+    border-radius: 12px;
+    padding: 10px;
+
+    color: rgb(255, 255, 255);
+    font-size: 22px;
+    text-align: center;
+
+    z-index: 1000; 
+}
+.btn-exit {
+            position: fixed;       /* Se queda fijo en la pantalla */
+            bottom: 30px;          /* Distancia desde abajo */
+            right: 30px;           /* Distancia desde la derecha */
+            z-index: 9999;         /* Asegura que esté por encima del mapa/juego */
+            
+            background-color: #ef4444; /* Rojo para indicar salida */
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;   /* Bordes redondeados */
+            text-decoration: none;
+            font-family: sans-serif;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* Sombra para darle profundidad */
+            transition: transform 0.2s ease, background-color 0.2s;
+        }
+
+        .btn-exit:hover {
+            background-color: #dc2626; /* Rojo más oscuro al pasar el mouse */
+            transform: scale(1.05);    /* Efecto de agrandarse un poco */
+        }

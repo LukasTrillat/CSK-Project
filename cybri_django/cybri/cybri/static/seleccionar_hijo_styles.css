@@ -1,0 +1,156 @@
+/* ESTILOS TIPO NETFLIX / DISNEY+ PARA SELECCIÓN DE PERFIL */
+
+/* Importamos la fuente si no se carga en el HTML principal, por seguridad */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+body {
+    /* Forzar pantalla completa y centrado */
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* Fondo radial oscuro */
+    background: radial-gradient(circle at center, #1f2937 0%, #18181b 100%);
+    overflow: hidden; /* Evitar scroll */
+}
+
+.profile-gate-container {
+    text-align: center;
+    animation: fadeIn 0.8s ease-out;
+    z-index: 10;
+}
+
+.gate-title {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+    letter-spacing: 1px;
+}
+
+/* La grilla de perfiles */
+.profiles-list {
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+}
+
+/* Tarjeta de cada niño */
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.profile-card:hover {
+    transform: scale(1.05); /* Efecto Pop al pasar el mouse */
+}
+
+/* El Avatar (Cuadrado redondeado) */
+.avatar {
+    width: 150px;
+    height: 150px;
+    background: linear-gradient(135deg, #1d4ed8, #1e40af); /* Azul Cybri */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid transparent; /* Borde invisible base */
+    transition: all 0.2s;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+/* Icono dentro del avatar */
+.avatar i {
+    font-size: 5rem;
+    color: rgba(255,255,255,0.8);
+    transition: color 0.2s;
+}
+
+/* Efecto Hover estilo Netflix (Borde blanco brillante) */
+.profile-card:hover .avatar {
+    border-color: #fff;
+    background: linear-gradient(135deg, #2563eb, #3b82f6);
+    box-shadow: 0 0 20px rgba(29, 78, 216, 0.6);
+}
+
+.profile-card:hover .avatar i {
+    color: #fff;
+}
+
+/* Estilo especial para el botón "Agregar" */
+.avatar.add-new {
+    background: transparent;
+    border: 2px dashed #4b5563;
+    box-shadow: none;
+}
+
+.avatar.add-new i {
+    color: #4b5563;
+    font-size: 4rem;
+}
+
+.profile-card:hover .avatar.add-new {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}
+
+.profile-card:hover .avatar.add-new i {
+    color: #fff;
+}
+
+/* Nombre del niño */
+.profile-name {
+    color: #9ca3af; /* Gris claro */
+    font-size: 1.2rem;
+    font-weight: 400;
+    transition: color 0.2s;
+}
+
+.profile-card:hover .profile-name {
+    color: #fff; /* Blanco al pasar el mouse */
+    font-weight: 600;
+}
+
+/* Botón de Administrar (Borde hueco) */
+.manage-btn {
+    display: inline-block;
+    border: 1px solid #6b7280;
+    padding: 10px 30px;
+    color: #9ca3af;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    margin-top: 2rem;
+}
+
+.manage-btn:hover {
+    border-color: #fff;
+    color: #fff;
+    background-color: rgba(255,255,255,0.1);
+}
+
+/* Animación de entrada suave */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(1.1); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Si no hay hijos */
+.empty-state {
+    color: #6b7280;
+    margin-bottom: 2rem;
+    font-style: italic;
+}

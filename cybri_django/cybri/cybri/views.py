@@ -1,9 +1,12 @@
 from django.shortcuts import render, HttpResponse, redirect
 from usuarios.models import Padre
 
-#Create views here
+# -- Views -- #
 
 def inicio(request):
+    # -- Eliminar la sesion del hijo -- #
+    request.session.pop('hijo_id', None)
+
     # -- Si existe un usuario logueado, pasarlo como contexto -- #
     id_en_sesion = request.session.get('usuario_id')
     usuario_logueado = None

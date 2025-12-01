@@ -1,0 +1,247 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+        <link rel="stylesheet" href="{% static 'control_parental_styles.css' %}">
+        <title>Cybri | Ciberseguridad</title>
+    </head>
+
+<body>
+    
+    <!-- NAVEGATION BAR -->
+    <div class="top-container">
+       <div class="nav">
+        <div class="logo">
+            <img src="{% static 'images/cybri (1).png' %}" alt="Cybri Logo">
+            <a href="{% url 'inicio' %}">Go back</a>
+        </div>
+
+        <div class="nav-links">
+            <a href="#">DashBoard</a>
+            <a href="#">Statistics</a>
+            <a href="#">Courses</a>
+            <a href="#">Settings</a>
+        </div>
+
+        <div class="right-section">
+            <i class="bx bx-bell"></i>
+            <i class="bx bx-search"></i>
+                <div class="profile">
+                <div class="info">
+                    <img src="{% static 'images/padre1.png' %}">
+                    <div>
+                        <a href="#">{{ usuario.nombre }}</a>
+                        <p>Padre</p>
+                    </div>
+                </div>
+                <i class="bx bx-chevron-down"></i>
+            </div>
+       </div> 
+    </div>
+
+    <div class="status">
+        <div class="header">
+            <h4 id="big">Your Courses</h4>
+            <h4 id="small">Weekly Activity</h4>
+        </div>
+
+        <div class="items-list">
+            <div class="item">
+                <div class="info">
+                    <div>
+                        <h5>Passwords</h5>
+                        <p>- 3 leassons left</p>
+                        <p>- 1 project left</p>
+                    </div>
+                    <i class="bx bx-data"></i>
+                </div>
+                <div class="progress">
+                    <div class="bar"></div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="info">
+                    <div>
+                        <h5>Suspicious Emails</h5>
+                        <p>- 2 assigments left</p>
+                        <p>- 5 tutorials left</p>
+                    </div>
+                    <i class="bx bx-terminal"></i>
+                </div>
+                <div class="progress">
+                    <div class="bar"></div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="info">
+                    <div>
+                        <h5>Social Media</h5>
+                        <p>- 4 chapters left</p>
+                        <p>- 8 quizzes left</p>
+                    </div>
+                    <i class="bx bxl-python"></i>
+                </div>
+                <div class="progress">
+                    <div class="bar"></div>
+                </div>
+            </div>
+             <div class="item activity-item"> 
+                <canvas class="activity-chart"></canvas>
+            </div>   
+        </div>
+    </div>
+
+
+    <div class="bottom-container">
+    <div class="prog-status">
+        <div class="header">
+            <div>
+                <h4>Learning Progress</h4>
+                <p class="prog-subtitle">Quick overview of your child's learning</p>
+            </div>
+
+            <button type="button" class="toggle-advanced" id="toggle-advanced">
+                Advanced details
+                <i class="bx bx-chevron-down"></i>
+            </button>
+        </div>
+
+        <div class="simple-summary">
+            <div class="simple-main">
+                <div>
+                    <p class="label">Overall progress</p>
+                    <h2 id="overall-progress" data-value="72">72%</h2>
+                </div>
+                <span class="status-pill status-pill-neutral" id="status-pill">
+                    On track
+                </span>
+            </div>
+            <p class="simple-text" id="simple-summary-text">
+                Loading summary...
+            </p>
+        </div>
+
+        <div class="advanced-panel" id="advanced-panel">
+            <div class="advanced-header">
+                <p>Detailed view</p>
+                <div class="tabs">
+                    <span class="tabs-label">Period</span>
+                    <a href="#" class="active">This year</a>
+                    <a href="#">Last 6 months</a>
+                    <a href="#">Last 3 months</a>
+                </div>
+            </div>
+
+            <div class="details">
+                <div class="item">
+                    <h2 data-role="current-gpa" data-value="3.45">3.45</h2>
+                    <p>Current learning score (your child)</p>
+                </div>
+                <div class="separator"></div>
+                <div class="item">
+                    <h2 data-role="class-gpa" data-value="4.78">4.78</h2>
+                    <p>Average score of the group</p>
+                </div>
+            </div>
+
+            <div class="prog-summary">
+                <p id="gpa-summary-text">
+                    Loading detailed summary...
+                </p>
+            </div>
+
+            <canvas class="prog-chart"></canvas>
+        </div>
+    </div>
+
+    <div class="popular safety-card safety-ok">
+    <div class="header">
+        <h4>
+            <i class="bx bx-shield-alt-2"></i>
+            Safety alerts
+        </h4>
+        <span class="tag tag-safe">Today</span>
+    </div>
+
+    <p class="safety-text-main">
+        No critical issues detected today.
+    </p>
+
+    <ul class="safety-list">
+        <li>
+            <i class="bx bx-check-circle"></i>
+            Completed 1 new lesson on <strong>Suspicious emails</strong>.
+        </li>
+        <li>
+            <i class="bx bx-check-circle"></i>
+            All quizzes passed this week.
+        </li>
+        <li>
+            <i class="bx bx-time"></i>
+            Social media time is within safe limits.
+        </li>
+    </ul>
+
+    <div class="safety-footer">
+        <i class="bx bx-info-circle"></i>
+        <p>You will see warnings here if we detect risky behaviour or low attention on key topics.</p>
+    </div>
+</div>
+
+    <div class="upcoming recent-activity">
+    <div class="header">
+        <h4>Recent activity</h4>
+        <span class="tag-activity">Last 7 days</span>
+    </div>
+
+    <div class="activity-list">
+        <div class="item">
+            <div>
+                <i class="bx bx-check-circle"></i>
+                <div class="event-info">
+                    <a href="#">Passwords</a>
+                    <p>Completed 1 lesson · Today</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>
+                <i class="bx bx-check-circle"></i>
+                <div class="event-info">
+                    <a href="#">Suspicious emails</a>
+                    <p>Watched 1 tutorial · Yesterday</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>
+                <i class="bx bx-time-five"></i>
+                <div class="event-info">
+                    <a href="#">Safe browsing</a>
+                    <p>Played 15 minutes · 2 days ago</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="item">
+            <div>
+                <i class="bx bx-error-circle"></i>
+                <div class="event-info">
+                    <a href="#">Social media</a>
+                    <p>Missed 1 quiz · 3 days ago</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'control_parental_script.js' %}"></script>
+</body> 
+</html>
