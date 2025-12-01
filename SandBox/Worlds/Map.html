@@ -19,12 +19,18 @@
 <body>
     <!-- This container manages all pages, it must be the parent of all pages -->
     <div class="wide-container" id="WorldContainer">
-        <img src="Assets/Sprites/WorldExample.png" alt="Descripción de la imagen" width="1500" height="1000">
+        <img class= "world-bg" src="Assets/Sprites/WorldExample.png" alt="Descripción de la imagen" width="2700" height="900"  style="margin-top: 140px; margin-left: -50px;">
+        <img class= "clouds2" src="Assets/Sprites/WorldExampleClouds.png" alt="Descripción de la imagen" width="400" height="300">
+        <img class= "clouds" src="Assets/Sprites/WorldExampleClouds.png" alt="Descripción de la imagen" width="400" height="300">
     </div>
 
     <!-- world data UI -->
     <div id="WorldUI">
-        <a id="WorldName"></a>
+        <div class="WorldInfo">
+            <a id="World">MUNDO 1</a>
+            <a id="WorldName"></a>
+            <a id="">Progreso: 0%</a>
+        </div>
     </div>
 
     <div class="scroll-ui" id="ScrollUI">
