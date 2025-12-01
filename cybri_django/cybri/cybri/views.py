@@ -1,21 +1,26 @@
-from django.shortcuts import render, HttpResponse, redirect
-from usuarios.models import Padre
-
-# -- Views -- #
+from django.shortcuts import render, redirect
+from django.contrib.auth import logout
 
 def inicio(request):
-    # -- Eliminar la sesion del hijo -- #
-    request.session.pop('hijo_id', None)
+    # Limpiamos sesión de juego si existe
+    if 'hijo_id' in request.session:
+        del request.session['hijo_id']
 
-    # -- Si existe un usuario logueado, pasarlo como contexto -- #
-    id_en_sesion = request.session.get('usuario_id')
     usuario_logueado = None
-    if id_en_sesion:
-        usuario_logueado = Padre.objects.filter(id=id_en_sesion).first()
+    
+    # Verificamos si hay usuario de Django logueado
+    if request.user.is_authenticated:
+        try:
+            # Intentamos obtener el perfil de padre
+            usuario_logueado = request.user.perfil_padre
+            # Agregamos atributo 'admin' temporalmente para compatibilidad con template
+            usuario_logueado.admin = request.user.is_staff
+        except:
+            # Es un admin sin perfil de padre
+            pass
 
     return render(request, "inicio.html", {'usuario_logueado': usuario_logueado})
 
 def cerrar_sesion(request):
-    # -- Terminar la sesion por completo -- #
-    request.session.flush()
+    logout(request)
     return redirect('inicio')

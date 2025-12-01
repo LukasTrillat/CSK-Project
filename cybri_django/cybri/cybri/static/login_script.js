@@ -1,21 +1,20 @@
-// Aquí esta el contendor pricnipal
-const container = document.getElementById
-('container')
+document.addEventListener('DOMContentLoaded', () => {
+    const container = document.getElementById('container');
+    const registerBtn = document.getElementById('register');
+    const loginBtn = document.getElementById('login');
 
-//Este es el boton que activa el formulario de registro
-const registerBtn = document.
-getElementById('register');
+    if (container && registerBtn && loginBtn) {
+        
+        // Al hacer clic en "Registrarse" (Panel Derecho) -> Activa panel deslizante
+        registerBtn.addEventListener('click', () => {
+            container.classList.add('active');
+        });
 
-// Este es el boton que activa el formulario de login
-const loginBtn = document.getElementById
-('login');
-
-// Cuando se hace click en "Sign Up", se agrega la clase "activate" esto hace que el contenedor muestre el formulario de registro
-registerBtn.addEventListener('click', () =>{
-    container.classList.add('active');
-});
-
-// Cuando se hace click en "Sign In", se agrega la clase "activate" esto hace que el contenedor muestre el formulario de inicio de sesión
-loginBtn.addEventListener('click', () =>{
-    container.classList.remove('active');
+        // Al hacer clic en "Iniciar Sesión" (Panel Izquierdo) -> Desactiva panel deslizante
+        loginBtn.addEventListener('click', () => {
+            container.classList.remove('active');
+        });
+    } else {
+        console.error("Error: No se encontraron los elementos del slider (container, registerBtn, loginBtn)");
+    }
 });
