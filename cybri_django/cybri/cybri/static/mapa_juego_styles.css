@@ -1,0 +1,134 @@
+  html, body {
+    height: 100%;
+    width: 8000px;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background: linear-gradient(to bottom,  #ddd8ff,#87ceeb, #b4f7ff);
+
+  }
+
+.scroll-ui {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 14px;
+    background: rgba(255, 255, 255, 0.645);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.509);
+
+}
+
+.scroll-thumb {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 120px;
+    background: rgb(82, 223, 255);
+    border-radius: 10px;
+    cursor: grab;
+    user-select: none;
+    touch-action: none;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.scroll-thumb:active {
+    cursor: grabbing;
+}
+
+
+  /* UI CONFIGURATION */
+  #WorldUI {
+    position: fixed;
+    top: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 60px;
+
+    border-radius: 12px;
+    padding: 10px;
+
+    color: rgb(0, 0, 0);
+    font-size: 22px;
+    text-align: center;
+
+    z-index: 1000; 
+}
+
+.WorldInfo {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    padding: 5px 40px;
+
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(50px);           
+    
+    border-radius: 30px;                   
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+    
+    font-family: "Segoe UI", sans-serif;
+    user-select: none;
+}
+
+#World {
+    font-size: 32px;
+    font-weight: 700;
+    color: rgb(0, 0, 0);
+}
+
+#WorldContainer {
+    position: relative;    
+    width: 100%;
+    height: 900px;            
+    overflow: hidden;       
+}
+
+
+.world-bg {
+    position: absolute;
+    top: 140px;
+    left: -50px;
+
+    width: 2700px;
+    height: 900px;
+
+    z-index: 2;
+}
+
+
+.clouds {
+    position: absolute;
+    top: 50px;    
+    left: -200px; 
+    width: 3000px;
+    height: auto;
+    z-index: 1;
+    animation: moveClouds 18s linear infinite;
+}
+
+.clouds2 {
+    position: absolute;
+    top: 50px;    
+    left: -200px; 
+    width: 5000px;
+    opacity: 0.6;
+    height: auto;
+    z-index: 1;
+    animation: moveClouds 14s linear infinite;
+}
+
+
+@keyframes moveClouds {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(600px); }
+}

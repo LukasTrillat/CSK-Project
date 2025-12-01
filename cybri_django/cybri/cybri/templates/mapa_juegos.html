@@ -1,41 +1,44 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>World</title>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>World</title>
 
-        <link rel="stylesheet" href="{% static 'mapa_juegos_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'mapa_juego_styles.css' %}">
 
-        <script src="{% static 'MapMaker.js' %}"></script>
-        <script src="{% static 'MapFunctions.js' %}"></script>
+    <script src="{% static 'MapMaker.js' %}"></script>
+    <script src="{% static 'MapFunctions.js' %}"></script>
 
-        <script src="{% static 'WorldExample.js' %}"></script> 
-    </head>
+    <script src="{% static 'WorldExample.js' %}"></script> </head>
 
-    <body>
-        <div class="wide-container" id="WorldContainer">
-            <img src="{% static 'games_assets/Sprites/WorldExample.png' %}" alt="Descripción de la imagen" width="1500" height="1000">
-        </div>
+<body>
+    <div class="wide-container" id="WorldContainer">
+        <img class="world-bg" src="{% static 'games_assets/Sprites/WorldExample.png' %}" alt="Descripción de la imagen" width="2700" height="900" style="margin-top: 140px; margin-left: -50px;">
+        
+        <img class="clouds2" src="{% static 'games_assets/Sprites/WorldExampleClouds.png' %}" alt="Descripción de la imagen" width="400" height="300">
+        
+        <img class="clouds" src="{% static 'games_assets/Sprites/WorldExampleClouds.png' %}" alt="Descripción de la imagen" width="400" height="300">
+    </div>
 
-        <div id="WorldUI">
+    <div id="WorldUI">
+        <div class="WorldInfo">
+            <a id="World">MUNDO 1</a>
             <a id="WorldName"></a>
+            <a id="">Progreso: 0%</a>
         </div>
+    </div>
 
-        <div class="scroll-ui" id="ScrollUI">
-            <div class="scroll-thumb" id="ScrollThumb"></div>
-        </div>
+    <div class="scroll-ui" id="ScrollUI">
+        <div class="scroll-thumb" id="ScrollThumb"></div>
+    </div>
 
-        <a href="{% url 'inicio' %}" class="btn-exit">
-        Volver al Inicio
-        </a>
 
-        <script>
-            SequenceTrigger(ExampleSequence);
-        </script>
+    <script>
+        // Asegúrate de que ExampleSequence esté definido en tus archivos JS cargados arriba
+        SequenceTrigger(ExampleSequence);
+    </script>
 
-    </body>
-
+</body>
 </html>
